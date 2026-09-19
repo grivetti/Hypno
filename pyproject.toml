@@ -1,0 +1,20 @@
+[project]
+name = "hypno"
+version = "0.1.0"
+description = "Personal relationship and life organizer"
+requires-python = ">=3.12"
+
+dependencies = [
+    "sqlalchemy>=2.0",
+    "typer>=0.12",
+]
+
+[project.scripts]
+hypno = "hypno.cli:run"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
