@@ -8,6 +8,7 @@ from .utils import *
 
 DATABASE_PATH = f"{CONFIG_DIR}/life.db"
 
+Path(DATABASE_PATH).parent.mkdir( parents=True, exist_ok=True, )
 
 engine = create_engine(
     f"sqlite:///{DATABASE_PATH}",
