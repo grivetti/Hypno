@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import date, datetime
+from typing import Any
 from pathlib import Path
 import keyring
 from smtplib import SMTPException
@@ -36,7 +37,7 @@ from .utils import *
 
 from .services.recommendations import get_recommendations
 
-app = typer.Typer(
+app: Any = typer.Typer(
     name="Hypno",
     help="Organizador vida pessoal.",
     no_args_is_help=False,
@@ -163,12 +164,6 @@ def load_person(
             selectinload(
                 Person.interactions
             ),
-
-            selectinload(
-                Person.conversation_topics
-            ).selectinload(
-                ConversationTopic.interest
-            ),
         )
     )
 
@@ -256,7 +251,7 @@ def ask_date(
 
     while True:
 
-        value = typer.prompt(
+        value: Any = typer.prompt(
             label,
             default=default_text,
         ).strip()
@@ -1450,16 +1445,19 @@ def send(
 
 @app.command("email")
 def configure_email() -> None:
-    email = typer.prompt(
+    """
+        Cadastra o email no arquivo de configuração.
+    """
+    email: Any = typer.prompt(
         "E-mail do Gmail"
     )
 
-    recipient = typer.prompt(
+    recipient: Any = typer.prompt(
         "E-mail que receberá o digest",
         default=email,
     )
 
-    password = typer.prompt(
+    password: Any = typer.prompt(
         "Senha de app do Gmail",
         hide_input=True,
     )

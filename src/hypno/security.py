@@ -9,7 +9,7 @@ def save_email_password(
     password: str,
 ) -> None:
     keyring.set_password(
-        SERVICE_NAME,
+        KEYRING_SERVICE,
         username,
         password,
     )
@@ -19,7 +19,7 @@ def get_email_password(
     username: str,
 ) -> str:
     password = keyring.get_password(
-        SERVICE_NAME,
+        KEYRING_SERVICE,
         username,
     )
 
@@ -35,6 +35,6 @@ def delete_email_password(
     username: str,
 ) -> None:
     keyring.delete_password(
-        SERVICE_NAME,
+        KEYRING_SERVICE,
         username,
     )
